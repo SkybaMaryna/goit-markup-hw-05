@@ -6,9 +6,11 @@
   --primary-light-10: rgba(255, 255, 255, 0.1);
   --primary-light-60: rgba(255, 255, 255, 0.6);
   --main-accent: #2196F3;
+  --main-accent-90: rgba(33, 150, 243, 0.9);
   --secondary-acent: #188CE8;
   --bg-color: #2F303A;
   --bg-color-40: rgba(47, 48, 58, 0.4);
+  --bg-color-80: rgba(47, 48, 58, 0.8);
   --bg-color-light: #F5F4FA;
   --header-border: #ECECEC;
   --main-border: #EEEEEE;
@@ -21,6 +23,9 @@
   --secondary-dark-20: rgba(0, 0, 0, 0.2);
   --bg-hero: #C4C4C4;
   --main-icon-color: #AFB1B8;
+
+  --time-dur: 250ms;
+  --time-func: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 
@@ -38,6 +43,10 @@ h1,h2,h3,h4,h5,h6 {
 p {
     margin: 0;
     padding: 0;
+}
+
+img {
+    display: block;
 }
 
 .list {
@@ -122,12 +131,26 @@ p {
     line-height: 1.1;
     letter-spacing: 0.02em;
     text-decoration: none;
+    transition: color var(--time-dur) var(--time-func);
+
+    position: relative;
 }
 
 .site-nav .link:hover,
 .site-nav .link:focus,
 .link.current {
     color: var(--main-accent);
+}
+
+.current::after {
+    position: absolute;
+    bottom: 0;
+    left: 0px;
+    content: "";
+    width: 100%;
+    height: 4px;
+    background-color: var(--main-accent);
+    border-radius: 2px;
 }
 
 .contacts {
@@ -153,10 +176,12 @@ p {
     line-height: 1.1;
     letter-spacing: 0.02em;
     text-decoration: none;
+    transition: color var(--time-dur) var(--time-func);
 }
 
 .icon-contact {
     fill: var(--main-light);
+    transition: fill var(--time-dur) var(--time-func);
 }
 
 .contact-heder:hover,
@@ -213,6 +238,8 @@ p {
     letter-spacing: 0.06em;
 
     cursor: pointer;
+
+    transition: background-color var(--time-dur) var(--time-func);
 }
 
 .hero-button:hover,
@@ -242,10 +269,6 @@ p {
     margin-bottom: 30px;
 
     background-color: var(--bg-color-light);
-}
-
-.icon-advance {
-    display: block;
 }
 
 .section{
@@ -291,6 +314,29 @@ p {
 
 .direction-list .item:not(:last-child) {
     margin-right: 30px;
+}
+
+.direction-text {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 70px;
+
+    padding: 27px 0;
+
+    color: var(--primary-light);
+    background-color: var(--bg-color-80);
+
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 1.1;
+    text-align: center;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+}
+
+.direction-list .item {
+    position: relative;
 }
 
 /* Team */
@@ -358,10 +404,13 @@ p {
     height: 44px;
 
     border-radius: 50%;
+
+    transition: background-color var(--time-dur) var(--time-func);
 }
 
 .icon-social {
     fill: var(--main-icon-color);
+    transition: fill var(--time-dur) var(--time-func);
 }
 
 .social-link:hover,
@@ -398,10 +447,13 @@ p {
     border-radius: 4px;
     width: 100%;
     height: 100%;
+    transition: border-color var(--time-dur) var(--time-func);
+
 }
 
 .icon-client {
     fill: var(--main-icon-color);
+    transition: fill var(--time-dur) var(--time-func);
 }
 
 .client-link:hover,
@@ -428,6 +480,7 @@ p {
     line-height: 1.7;
     letter-spacing: 0.03em;
     text-decoration: none;
+    transition: color var(--time-dur) var(--time-func);
 }
 
 .address:hover,
@@ -444,6 +497,7 @@ p {
     line-height: 1.7;
     letter-spacing: 0.03em;
     text-decoration: none;
+    transition: color var(--time-dur) var(--time-func);
 }
 
 .contact-footer:hover,
@@ -486,10 +540,12 @@ p {
 
     border-radius: 50%;
     background-color: var(--primary-light-10);
+    transition: background-color var(--time-dur) var(--time-func);
 }
 
 .footer-icon-social {
     fill: var(--primary-light);
+    transition: fill var(--time-dur) var(--time-func);
 }
 
 .footer-social-link:hover,
@@ -525,6 +581,7 @@ p {
     letter-spacing: 0.03em;
 
     cursor: pointer;
+    transition: color var(--time-dur) var(--time-func), background-color var(--time-dur) var(--time-func), box-shadow var(--time-dur) var(--time-func);
 }
 
 .filter:hover,
@@ -564,13 +621,55 @@ box-shadow: 0px 1px 1px var(--secondary-dark-12), 0px 4px 4px var(--secondary-da
 }
 
 .work {
+    position: relative;
     text-decoration: none;
     display: block;
     outline: transparent;
+    transition: box-shadow var(--time-dur) var(--time-func);
 }
 
-.poster {
-    display: block;
+.work-thumb {
+  position: relative;
+  overflow: hidden;
+}
+
+.work-thumb::before {
+    position: absolute;
+    content: "";
+    display: inline-block;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--main-accent-90);
+
+    /* opacity: 0; */
+
+    transform: translateY(120%);
+    transition: transform var(--time-dur) var(--time-func);
+}
+
+.work-text {
+    position: absolute;
+    top: 63px;
+    left: 24px;
+
+    display: inline-block;
+    font-size: 18px;
+    line-height: 1.6;
+    letter-spacing: 0.03em;
+
+    color: var(--primary-light);
+
+    /* opacity: 0; */
+    transform: translateY(150%);
+    transition: transform var(--time-dur) var(--time-func);
+}
+
+.work:hover .work-text,
+.work:hover .work-thumb::before {
+   opacity: 1;
+   transform: translateY(0);
 }
 
 .work-title {
@@ -588,4 +687,57 @@ box-shadow: 0px 1px 1px var(--secondary-dark-12), 0px 4px 4px var(--secondary-da
     font-size: 16px;
     line-height: 1.9;
     letter-spacing: 0.03em;
+}
+
+/* Modal */
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  background-color: var(--bg-color-40);
+
+  transition: opacity var(--time-dur) var(--time-func), visibility var(--time-dur) var(--time-func), transform var(--time-dur) var(--time-func);
+}
+
+.backdrop.is-hidden {
+   opacity: 0;
+   visibility: hidden;
+   pointer-events: none;
+   transform: scale(0.6);
+}
+
+.modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+
+    width: 528px;
+    min-height: 581px;
+    border-radius: 4px;
+
+    background: var(--primary-light);
+    box-shadow: 0px 1px 3px var(--secondary-dark-12), 0px 1px 1px var(--secondary-dark-14), 0px 2px 1px var(--secondary-dark-20);
+
+}
+
+.modal-button {
+    position: absolute;
+    top: 8px;
+    right:  8px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 0;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+
+    background: var(--primary-light);
+    border: 1px solid var(--secondary-dark-10);
 }
