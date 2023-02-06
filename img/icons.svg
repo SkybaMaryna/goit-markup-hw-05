@@ -65,5 +65,8 @@
     <symbol id="icon-send" viewBox="0 0 32 32">
       <path fill="#fff" d="M32 0 0 18l10.227 3.788L26 7 14.002 23.186l.01.004-.012-.004V32l5.735-6.691L27 28l5-28z" style="fill:var(--color5, #fff)"/>
     </symbol>
+    <symbol id="icon-close">
+      <path fill="#000" d="M15 4.108 13.892 3 9.5 7.392 5.108 3 4 4.108 8.392 8.5 4 12.892 5.108 14 9.5 9.608 13.892 14 15 12.892 10.608 8.5 15 4.108Z"/>
+    </symbol>
   </defs>
 </svg>
