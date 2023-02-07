@@ -667,7 +667,9 @@ box-shadow: 0px 1px 1px var(--secondary-dark-12), 0px 4px 4px var(--secondary-da
 }
 
 .work:hover .work-text,
-.work:hover .work-thumb::before {
+.work:hover .work-thumb::before,
+.work:focus .work-text, 
+.work:focus .work-thumb::before {
    opacity: 1;
    transform: translateY(0);
 }
